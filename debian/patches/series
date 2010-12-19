@@ -1,0 +1,22 @@
+01-manpage.patch
+02-permissions.patch
+09-xpdfrc-manpage.patch
+11-fix-hyphens-in-manpages.patch
+12-fix-typo-in-help.patch
+
+# various bug fies
+fix-408502.patch
+fix-437725.patch
+fix-458468.patch
+fix-479467.patch
+
+# patches to use poppler
+use-system-xpdfrc.patch
+use-poppler-get-cmap-arguments.patch
+use-poppler-private-textpage-destructor.patch
+use-poppler-fix-filespecname.patch
+use-poppler-fix-psoutputdev.patch
+
+# various newer bug fixes
+fix-577031.patch
+fix-580495.patch
