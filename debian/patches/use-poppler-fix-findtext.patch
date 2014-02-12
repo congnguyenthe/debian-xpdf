@@ -1,0 +1,49 @@
+description: use poppler's findtext api
+author: Michael Gilbert <michael.s.gilbert@gmail.com>
+--- xpdf-3.03.orig/xpdf/PDFCore.cc
++++ xpdf-3.03/xpdf/PDFCore.cc
+@@ -1741,7 +1741,7 @@ GBool PDFCore::findU(Unicode *u, int len
+     page = findPage(pg);
+   }
+   if (page->text->findText(u, len, startAtTop, gTrue, startAtLast, gFalse,
+-			   caseSensitive, backward, wholeWord,
++			   caseSensitive, backward,
+ 			   &xMin, &yMin, &xMax, &yMax)) {
+     goto found;
+   }
+@@ -1759,7 +1759,7 @@ GBool PDFCore::findU(Unicode *u, int len
+ 	 pg += backward ? -1 : 1) {
+       doc->displayPage(textOut, pg, 72, 72, 0, gFalse, gTrue, gFalse);
+       if (textOut->findText(u, len, gTrue, gTrue, gFalse, gFalse,
+-			    caseSensitive, backward, wholeWord,
++			    caseSensitive, backward,
+ 			    &xMin, &yMin, &xMax, &yMax)) {
+ 	delete textOut;
+ 	goto foundPage;
+@@ -1772,7 +1772,7 @@ GBool PDFCore::findU(Unicode *u, int len
+ 	 pg += backward ? -1 : 1) {
+       doc->displayPage(textOut, pg, 72, 72, 0, gFalse, gTrue, gFalse);
+       if (textOut->findText(u, len, gTrue, gTrue, gFalse, gFalse,
+-			    caseSensitive, backward, wholeWord,
++			    caseSensitive, backward,
+ 			    &xMin, &yMin, &xMax, &yMax)) {
+ 	delete textOut;
+ 	goto foundPage;
+@@ -1794,7 +1794,7 @@ GBool PDFCore::findU(Unicode *u, int len
+       yMax = selectLRY;
+     }
+     if (page->text->findText(u, len, gTrue, gFalse, gFalse, stopAtLast,
+-			     caseSensitive, backward, wholeWord,
++			     caseSensitive, backward,
+ 			     &xMin, &yMin, &xMax, &yMax)) {
+       goto found;
+     }
+@@ -1811,7 +1811,7 @@ GBool PDFCore::findU(Unicode *u, int len
+ 	 gTrue);
+   page = findPage(pg);
+   if (!page->text->findText(u, len, gTrue, gTrue, gFalse, gFalse,
+-			    caseSensitive, backward, wholeWord,
++			    caseSensitive, backward,
+ 			    &xMin, &yMin, &xMax, &yMax)) {
+     // this can happen if coalescing is bad
+     goto notFound;

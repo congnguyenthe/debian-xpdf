@@ -1,3 +1,206 @@
+xpdf (3.03-10) unstable; urgency=low
+
+  * Build-depend on libpoppler-private-dev (closes: #660992).
+  * Update my email address.
+
+ -- Michael Gilbert <mgilbert@debian.org>  Mon, 11 Jun 2012 21:40:47 -0400
+
+xpdf (3.03-9) unstable; urgency=low
+
+  * Let poppler find and select non-embedded font file locations.  Thanks to
+    Vincent Lefevre for finding a solution to this problem (closes: #641873).
+  * Remove now ineffective font file configuration options from xpdfrc.
+  * Revert UTF8 title conversion change (closes: #659272).
+  * Revert lp as default print command.  Use lpr (the privious default) and
+    recommend cups-bsd package (closes: #652606).
+  * Fix segfault issue in additional zoom options patch and enable it again.
+    Thanks to Jörg-Volker Peetz (closes: #654308).
+  * Support title refresh when starting from a non-compressed file
+    (lp: #932062).
+  * Use "Xpdf" instead of "xpdf" in documentation on Xresources
+    (closes: #631450).
+  * Check exit codes of system calls (fix -Wunused-result compiler warnings).
+  * Fix a pointer casting to a different size (fix -Wint-to-pointer-cast
+    compiler warning).
+  * Add -Wno-format-extra-args to build flags.
+  * Bump standards to 3.9.3.
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Fri, 24 Feb 2012 17:33:29 -0500
+
+xpdf (3.03-8) unstable; urgency=low
+
+  * Fix uncompressed file handling (closes: #647223).
+  * Build-conflict with binutils-gold (closes: #648556).
+  * Bump to debhelper 9.
+    - simplify hardening build flag logic in debian/rules (closes: #652689).
+  * Convert UTF8 titles to ISO8859 when yudit is available (closes: #645903).
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Tue, 06 Dec 2011 15:11:46 -0500
+
+xpdf (3.03-7) unstable; urgency=low
+
+  * Fix build-hardening to include +pie,+bindnow.
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Sat, 29 Oct 2011 17:16:18 -0400
+
+xpdf (3.03-6) unstable; urgency=low
+
+  * Build with binutils-gold.
+  * Fix hyphen in xpdfrc manpage.
+  * Enable all build-hardening flags.
+  * Fix some invalid type conversions.
+  * Update copyright file to latest dep5 standard.
+  * Fix temp file handling with exec (closes: #642203).
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Sat, 15 Oct 2011 01:01:54 -0400
+
+xpdf (3.03-5) unstable; urgency=low
+
+  * Use exec to launch xpdf.real (closes: #640177). 
+  * Use lp as default print command (closes: #614045).
+  * Really fix xpdfrc config file location (closes: #641941).
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Sat, 17 Sep 2011 04:18:00 -0400
+
+xpdf (3.03-4) unstable; urgency=low
+
+  * Fix helvetica font entry in xpdfrc.
+  * Remove t1lib options from xpdfrc.
+  * Assign system xpdfrc file location in debian/rules (drop patch).
+  * Replace newly deprecated commands in various language support files
+    (closes: #640486,640162).
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Sat, 17 Sep 2011 00:35:39 -0400
+
+xpdf (3.03-3) unstable; urgency=low
+
+  * Use better quoting in the xpdf wrapper script.
+  * Replace deprecated "displayFontT1" option in the default xpdfrc file with
+    its new replacement: "fontFile" (closes: #640967, #640486).
+  * Disable additional zoom features patch for now (closes: #427632):
+    - if anyone wants this to be re-enabled, the patch needs to be corrected so
+      that fullscreen continuous mode no longer crashes (see closed bug).
+  * Fix skipping first file passed to "-m" argument (closes: #640897).
+  * Add binutils-gold build conflict.
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Sun, 04 Sep 2011 14:50:57 -0400
+
+xpdf (3.03-2) unstable; urgency=low
+
+  * Remove old breaks/replaces.
+  * Remove unsatisfiable versioned dependency on lesstif.
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Thu, 01 Sep 2011 23:33:38 -0400
+
+xpdf (3.03-1) unstable; urgency=low
+
+  * New upstream release:
+    - Refresh patches.
+    - Drop 12-fix-typo-in-help.patch, fix-437725.patch, fix-479467.patch, and
+      fix-577031.patch (now applied upstream).
+  * Add various patches for poppler's alternative api:
+    - use-poppler-fix-findtext.patch, use-poppler-fix-textoutputdev.patch,
+      use-poppler-openfile.patch, and use-poppler-fix-findfontfile.patch.
+  * Remove libxt linker flag.
+  * Use -fpermissive build flag.
+  * Really pass all arguments when using -m.
+  * Fix broken -z argument (closes: #636390).
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Wed, 03 Aug 2011 23:58:42 -0400
+
+xpdf (3.02-21) unstable; urgency=low
+
+  * Pass real file name when not compressed (closes: #636432).
+  * Handle backslashes in filenames with -m option (closes: #636403).
+  * Document quirks of -m (closes: #636449).
+  * Pass all arguments in -m option.
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Wed, 03 Aug 2011 22:55:26 -0400
+
+xpdf (3.02-20) unstable; urgency=low
+
+  * Simplify wrapper logic.
+  * Set up tempfile trap before extracting compressed pdf files
+    (closes: #635850).
+  * Fix titling on compressed files (closes: #635881).
+  * Use newlines to separate file names "-m" option handling (closes: #635852).
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Sun, 31 Jul 2011 03:22:48 -0400
+
+xpdf (3.02-19) unstable; urgency=high
+
+  * Fix insecure tempfile usage (closes: #635849).
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Fri, 29 Jul 2011 14:02:05 -0400
+
+xpdf (3.02-18) unstable; urgency=low
+
+  * Fix spelling error in control file (closes: #631407).
+  * Pass "-upw" with its second argument in xpdf wrapper (closes: #632826).
+  * Quote arguments to commands (closes: #633069).
+  * Handle file names with single quotes (closes: #631250).
+  * Handle no file name correctly again.
+  * Fix title command handling (closes: #611522).
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Thu, 28 Jul 2011 00:11:15 -0400
+
+xpdf (3.02-17) unstable; urgency=medium
+
+  * add missing poppler dependency bump.
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Sat, 09 Jul 2011 14:43:54 -0400
+
+xpdf (3.02-16) unstable; urgency=medium
+
+  * support poppler 0.16 (closes: #627667):
+    - rename parseargs.c to parseargs.cc (handles poppler's goo/gtypes.h
+      being a c++ header now).
+    - apply patch for another PSOutputDev api change.
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Sat, 09 Jul 2011 14:18:07 -0400
+
+xpdf (3.02-15) unstable; urgency=low
+
+  * manpage updates:
+    - document new xpdf usage (including new -m option).
+    - remove references to zxpdf.
+    - drop corrections to manpages for no-longer built binaries.
+    - merge all manpage fixes into one patch.
+  * launch xpdf from zxpdf deprecation script.
+  * support unsuffixed pdf files (closes: #631109).
+  * fix another filename whitespace issue (closes: #611522).
+  * clean up debian/rules.
+  * lengthen the package's long description.
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Tue, 21 Jun 2011 20:01:49 -0400
+
+xpdf (3.02-14) unstable; urgency=low
+
+  * Only use temp files when viewing compressed files (closes: #621774).
+  * "-m" option no longer needs to be last.
+  * Fix filenames with spaces issue in new xpdf wrapper script.
+  * Fix trap signal names.
+  * Use poppler's naming for mouse button 1 binding (closes: #627426).
+  * Fix continuous mode crashiness (closes: #521381).
+  * Bump standards version to 3.9.2. 
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Sat, 18 Jun 2011 16:51:09 -0400
+
+xpdf (3.02-13) unstable; urgency=low
+
+  * Introduce "-m" command-line option: easily open multiple files in xpdf.
+  * Process postinst on "upgrade" command as well (closes: #610441).
+  * Set DM-Upload-Allowed.
+  * Drop lenny->squeeze transitional packages.
+  * Provide zxpdf functionality automatically via new xpdf wrapper.
+  * Rewrite zxpdf to address input sanitization issues (closes: #607650,
+    #611522).
+  * Don't populate CPPFLAGS twice.
+  * Include explicit links to lesstif2 and x11 libraries (closes: #615802,
+    #600434).
+
+ -- Michael Gilbert <michael.s.gilbert@gmail.com>  Fri, 04 Mar 2011 18:03:04 -0500
+
 xpdf (3.02-12) unstable; urgency=high
 
   * zxpdf: don't erase original pdf file during clean up (closes: #598945).

@@ -2,7 +2,7 @@
 #
 # System-wide xpdfrc file
 #
-# The Xpdf tools look for a config file in two places:
+# Xpdf looks for a config file in the following two places:
 # 1. ~/.xpdfrc
 # 2. /etc/xpdf/xpdfrc
 #
@@ -18,34 +18,6 @@
 # http://www.foolabs.com/xpdf/
 #
 #========================================================================
-
-#----- display fonts
-
-# These map the Base-14 fonts to the Type 1 fonts that ship with
-# ghostscript (gsfonts package).
-
-displayFontT1 Times-Roman		/usr/share/fonts/type1/gsfonts/n021003l.pfb
-displayFontT1 Times-Italic		/usr/share/fonts/type1/gsfonts/n021023l.pfb
-displayFontT1 Times-Bold		/usr/share/fonts/type1/gsfonts/n021004l.pfb
-displayFontT1 Times-BoldItalic		/usr/share/fonts/type1/gsfonts/n021024l.pfb
-displayFontT1 Helvetica			/usr/share/fonts/type1/gsfonts/n019003l.pfb
-displayFontT1 Helvetica-Oblique		/usr/share/fonts/type1/gsfonts/n019023l.pfb
-displayFontT1 Helvetica-Bold		/usr/share/fonts/type1/gsfonts/n019004l.pfb
-displayFontT1 Helvetica-BoldOblique	/usr/share/fonts/type1/gsfonts/n019024l.pfb
-displayFontT1 Courier			/usr/share/fonts/type1/gsfonts/n022003l.pfb
-displayFontT1 Courier-Oblique		/usr/share/fonts/type1/gsfonts/n022023l.pfb
-displayFontT1 Courier-Bold		/usr/share/fonts/type1/gsfonts/n022004l.pfb
-displayFontT1 Courier-BoldOblique	/usr/share/fonts/type1/gsfonts/n022024l.pfb
-displayFontT1 Symbol			/usr/share/fonts/type1/gsfonts/s050000l.pfb
-displayFontT1 ZapfDingbats		/usr/share/fonts/type1/gsfonts/d050000l.pfb
-
-# If you need to display PDF files that refer to non-embedded fonts,
-# you should add one or more fontDir options to point to the
-# directories containing the font files.  Xpdf will only look at .pfa,
-# .pfb, and .ttf files in those directories (other files will simply
-# be ignored).
-
-#fontDir		/usr/local/fonts/bakoma
 
 #----- PostScript output control
 
@@ -72,14 +44,6 @@ psFile			"|lpr"
 #textEOL		unix
 
 #----- misc settings
-
-# Enable Type 1 font rasterizing with t1lib. Default "yes".
-
-#enableT1lib		no
-
-# Enable TrueType and Type 1 font rasterizing with FreeType. Default "yes".
-
-#enableFreeType		no
 
 # Enable anti-aliasing of fonts. Default "yes".
 

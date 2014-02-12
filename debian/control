@@ -1,15 +1,18 @@
 Source: xpdf
 Section: text
 Priority: optional
-Maintainer: Michael Gilbert <michael.s.gilbert@gmail.com>
+Maintainer: Michael Gilbert <mgilbert@debian.org>
 Uploaders: Osamu Aoki <osamu@debian.org>
-Standards-Version: 3.9.1
+Standards-Version: 3.9.3
 Build-Depends: 
- debhelper (>= 7.0.50~),
+ debhelper (>= 9),
  pkg-config,
  libx11-dev,
  lesstif2-dev,
- libpoppler-dev (>= 0.12.4)
+ libpoppler-private-dev (>= 0.16),
+Build-Conflicts:
+ binutils-gold,
+DM-Upload-Allowed: yes
 Homepage: http://www.foolabs.com/xpdf/
 Vcs-Browser: http://git.debian.org/?p=collab-maint/xpdf.git
 Vcs-Git: git://git.debian.org/git/collab-maint/xpdf.git
@@ -18,44 +21,16 @@ Package: xpdf
 Architecture: any
 Depends:
  ${misc:Depends},
- ${shlibs:Depends},
-Breaks:
- xpdf-japanese (<= 1:20040727-1),
- xpdf-korean (<= 1:20040727-1),
- xpdf-chinese-simplified (<= 20040727-1),
- xpdf-chinese-traditional (<= 1:20040727-1),
- xpdf-reader (<< 3.02-10)
-Replaces:
- xpdf-common,
- xpdf-reader,
- xpdf-japanese,
- xpdf-korean,
- xpdf-chinese-simplified,
- xpdf-chinese-traditional 
+ ${shlibs:Depends}
 Recommends:
  poppler-utils,
  poppler-data,
- gsfonts-x11
+ gsfonts-x11,
+ cups-bsd,
 Provides:
  pdf-viewer
 Description: Portable Document Format (PDF) reader
- xpdf is a viewer for Portable Document Format (PDF) files.  These are,
- sometimes, called 'Acrobat' files after the name of Adobe's PDF software.
-
-Package: xpdf-reader
-Architecture: all
-Depends:
- ${misc:Depends},
- xpdf
-Description: Transitional package for xpdf
- This is a transitional package for xpdf, and can be safely removed
- after the installation is complete. 
-
-Package: xpdf-utils
-Architecture: all
-Depends:
- ${misc:Depends},
- poppler-utils
-Description: Transitional package for poppler-utils
- This is a transitional package for poppler-utils, and can be safely removed
- after the installation is complete. 
+ xpdf is a light-weight open source viewer for Portable Document Format (PDF)
+ files (also called 'Adobe Acrobat' or 'Acrobat' files).  This is just the
+ xpdf viewer client; various command-line pdf tools are now provided via the
+ poppler-utils package.

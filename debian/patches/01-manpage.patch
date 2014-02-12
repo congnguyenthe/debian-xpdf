@@ -1,103 +1,9 @@
 description: manpage updates
---- a/doc/pdffonts.1
-+++ b/doc/pdffonts.1
-@@ -73,9 +73,7 @@
- .SH CONFIGURATION FILE
- Pdffonts reads a configuration file at startup.  It first tries to
- find the user's private config file, ~/.xpdfrc.  If that doesn't
--exist, it looks for a system-wide config file, typically
--/usr/local/etc/xpdfrc (but this location can be changed when pdffonts
--is built).  See the
-+exist, it looks for a system-wide config file, /etc/xpdf/xpdfrc.  See the
- .BR xpdfrc (5)
- man page for details.
- .SH OPTIONS
---- a/doc/pdfimages.1
-+++ b/doc/pdfimages.1
-@@ -12,9 +12,9 @@
- saves images from a Portable Document Format (PDF) file as Portable
- Pixmap (PPM), Portable Bitmap (PBM), or JPEG files.
- .PP
--Pdfimages reads the PDF file, scans one or more pages,
-+Pdfimages reads the PDF file
- .IR PDF-file ,
--and writes one PPM, PBM, or JPEG file for each image,
-+scans one or more pages, and writes one PPM, PBM, or JPEG file for each image,
- .IR image-root - nnn . xxx ,
- where
- .I nnn
-@@ -28,9 +28,7 @@
- .SH CONFIGURATION FILE
- Pdfimages reads a configuration file at startup.  It first tries to
- find the user's private config file, ~/.xpdfrc.  If that doesn't
--exist, it looks for a system-wide config file, typically
--/usr/local/etc/xpdfrc (but this location can be changed when pdfimages
--is built).  See the
-+exist, it looks for a system-wide config file, /etc/xpdf/xpdfrc.  See the
- .BR xpdfrc (5)
- man page for details.
- .SH OPTIONS
---- a/doc/pdfinfo.1
-+++ b/doc/pdfinfo.1
-@@ -71,8 +71,7 @@
- .SH CONFIGURATION FILE
- Pdfinfo reads a configuration file at startup.  It first tries to find
- the user's private config file, ~/.xpdfrc.  If that doesn't exist, it
--looks for a system-wide config file, typically /usr/local/etc/xpdfrc
--(but this location can be changed when pdfinfo is built).  See the
-+looks for a system-wide config file, /etc/xpdf/xpdfrc.  See the
- .BR xpdfrc (5)
- man page for details.
- .SH OPTIONS
---- a/doc/pdftoppm.1
-+++ b/doc/pdftoppm.1
-@@ -24,9 +24,7 @@
- .SH CONFIGURATION FILE
- Pdftoppm reads a configuration file at startup.  It first tries to
- find the user's private config file, ~/.xpdfrc.  If that doesn't
--exist, it looks for a system-wide config file, typically
--/usr/local/etc/xpdfrc (but this location can be changed when pdftoppm
--is built).  See the
-+exist, it looks for a system-wide config file, /etc/xpdf/xpdfrc. See the
- .BR xpdfrc (5)
- man page for details.
- .SH OPTIONS
---- a/doc/pdftops.1
-+++ b/doc/pdftops.1
-@@ -31,8 +31,7 @@
- .SH CONFIGURATION FILE
- Pdftops reads a configuration file at startup.  It first tries to find
- the user's private config file, ~/.xpdfrc.  If that doesn't exist, it
--looks for a system-wide config file, typically /usr/local/etc/xpdfrc
--(but this location can be changed when pdftops is built).  See the
-+looks for a system-wide config file, /etc/xpdf/xpdfrc.  See the
- .BR xpdfrc (5)
- man page for details.
- .SH OPTIONS
---- a/doc/pdftotext.1
-+++ b/doc/pdftotext.1
-@@ -28,9 +28,7 @@
- .SH CONFIGURATION FILE
- Pdftotext reads a configuration file at startup.  It first tries to
- find the user's private config file, ~/.xpdfrc.  If that doesn't
--exist, it looks for a system-wide config file, typically
--/usr/local/etc/xpdfrc (but this location can be changed when pdftotext
--is built).  See the
-+exist, it looks for a system-wide config file, /etc/xpdf/xpdfrc.  See the
- .BR xpdfrc (5)
- man page for details.
- .SH OPTIONS
---- a/doc/xpdf.1
-+++ b/doc/xpdf.1
-@@ -7,10 +7,15 @@
- [options]
- .RI [ PDF-file
- .RI [ page " | +" dest ]]
-+.sp
-+.B zxpdf
-+[options]
-+.RI [ PDF-file
-+.RI [ page " | +" dest ]]
+Index: xpdf/doc/xpdf.1
+===================================================================
+--- xpdf.orig/doc/xpdf.1	2012-02-24 19:44:18.000000000 -0500
++++ xpdf/doc/xpdf.1	2012-02-24 19:44:54.000000000 -0500
+@@ -10,7 +10,7 @@
  .SH DESCRIPTION
  .B Xpdf
  is a viewer for Portable Document Format (PDF) files.  (These are also
@@ -106,7 +12,7 @@ description: manpage updates
  software.)  Xpdf runs under the X Window System on UNIX, VMS, and
  OS/2.
  .PP
-@@ -29,7 +34,7 @@
+@@ -29,7 +29,7 @@
  xpdf file.pdf 18
  .RE
  .PP
@@ -115,15 +21,15 @@ description: manpage updates
  the page number.  (This is only useful with PDF files that provide
  named destination targets.)
  .PP
-@@ -38,11 +43,17 @@
+@@ -38,11 +38,17 @@
  .RS
  xpdf
  .RE
 +.PP
-+Compressed files (gz and bz2) may be viewed using the command:
++Various compressed formats (gz, bz2, xz, and Z) are also supported, for example::
 +.PP
 +.RS
-+zxpdf file.pdf.gz
++xpdf file.pdf.gz
 +.RE
 +.PP
  .SH CONFIGURATION FILE
@@ -135,18 +41,65 @@ description: manpage updates
  .BR xpdfrc (5)
  man page for details.
  .SH OPTIONS
-@@ -92,8 +103,8 @@
+@@ -54,48 +60,48 @@
+ Set the initial window geometry.
+ .RB ( \-geometry
+ is equivalent.)
+-.RB "[X resource: " xpdf.geometry ]
++.RB "[X resource: " Xpdf.geometry ]
+ .TP
+ .BI \-title " title"
+ Set the window title.  By default, the title will be "xpdf: foo.pdf".
+-.RB "[X resource: " xpdf.title ]
++.RB "[X resource: " Xpdf.title ]
+ .TP
+ .B \-cmap
+ Install a private colormap.  This is ignored on TrueColor visuals.
+-.RB "[X resource: " xpdf.installCmap ]
++.RB "[X resource: " Xpdf.installCmap ]
+ .TP
+ .BI \-rgb " number"
+ Set the size of largest RGB cube xpdf will try to allocate.  The
+ default is 5 (for a 5x5x5 cube); set to a smaller number to conserve
+ color table entries.  This is ignored with private colormaps and on
+ TrueColor visuals.
+-.RB "[X resource: " xpdf.rgbCubeSize ]
++.RB "[X resource: " Xpdf.rgbCubeSize ]
+ .TP
+ .B \-rv
+ Set reverse video mode.  This reverses the colors of everything except
+ images.  It may not always produce great results for PDF files which
+ do weird things with color.  This also causes the paper color to
+ default to black.
+-.RB "[X resource: " xpdf.reverseVideo ]
++.RB "[X resource: " Xpdf.reverseVideo ]
+ .TP
+ .BI \-papercolor " color"
+ Set the "paper color", i.e., the background of the page display.  This
+ will not work too well with PDF files that do things like filling in
+ white behind the text.
+-.RB "[X resource: " xpdf.paperColor ]
++.RB "[X resource: " Xpdf.paperColor ]
+ .TP
+ .BI \-mattecolor " color"
+ Set the matte color, i.e., the color used for background outside the
+ actual page area.  (There is a separate setting,
+-xpdf.fullScreenMatteColor, for full-screen mode.)
+-.RB "[X resource: " xpdf.matteColor ]
++Xpdf.fullScreenMatteColor, for full-screen mode.)
++.RB "[X resource: " Xpdf.matteColor ]
  .TP
  .BI \-z " zoom"
  Set the initial zoom factor.  A number specifies a zoom percentage,
--where 100 means 72 dpi.You may also specify \'page', to fit the page
--to the window size, or \'width', to fit the page width to the window
-+where 100 means 72 dpi.You may also specify 'page', to fit the page
-+to the window size, or 'width', to fit the page width to the window
+ where 100 means 72 dpi.  You may also specify \'page', to fit the page
+ to the window size, or \'width', to fit the page width to the window
  width.
- .RB "[config file: " initialZoom "; or X resource: " xpdf.initialZoom ]
+-.RB "[config file: " initialZoom "; or X resource: " xpdf.initialZoom ]
++.RB "[config file: " initialZoom "; or X resource: " Xpdf.initialZoom ]
  .TP
-@@ -123,7 +134,7 @@
+ .B \-cont
+ Start in continuous view mode, i.e., with one vertical scroll bar for
+@@ -123,7 +129,7 @@
  .BI \-ps " PS-file"
  Set the default file name for PostScript output (i.e., the name which
  will appear in the print dialog).  This can also be of the form
@@ -155,7 +108,29 @@ description: manpage updates
  .RB "[config file: " psFile ]
  .TP
  .BI \-paper " size"
-@@ -231,7 +242,7 @@
+@@ -210,10 +216,20 @@
+ .B \-\-help
+ are equivalent.)
+ .PP
++.TP
++.BI \-m " file1 file2 ..."
++Open multiple pdf files:
++.I file1 file2 ...
++etc.  NOTE: The list of files is terminated once an argument starting with
++a dash is encountered.  In order to view file names starting with
++a dash, simply append "./".
++.BI \-m
++may be used multiple times.
++.PP
+ Several other standard X options and resources will work as expected:
+ .TP
+ .BI \-display " display"
+-.RB "[X resource: " xpdf.display ]
++.RB "[X resource: " Xpdf.display ]
+ .TP
+ .BI \-fg " color"
+ .RB ( \-foreground
+@@ -231,15 +247,15 @@
  .RB "[X resource: " xpdf*fontList ]
  .PP
  The color and font options only affect the user interface elements,
@@ -164,7 +139,17 @@ description: manpage updates
  .PP
  The following X resources do not have command line option equivalents:
  .TP
-@@ -254,7 +265,7 @@
+-.B xpdf.toolTipEnable
++.B Xpdf.toolTipEnable
+ Enables (if set to true) or disables (if set to false) the tool-tips
+ on the toolbar buttons.
+ .TP
+-.B xpdf.fullScreenMatteColor
++.B Xpdf.fullScreenMatteColor
+ Sets the matte color to be used in full-screen mode.  The default
+ setting is "black".
+ .SH CONTROLS
+@@ -254,7 +270,7 @@
  .B "dashed left/right arrow buttons"
  Move backward or forward along the history path.
  .TP
@@ -173,7 +158,7 @@ description: manpage updates
  Move to a specific page number.  Click in the box to activate it, type
  the page number, then hit return.
  .TP
-@@ -267,17 +278,17 @@
+@@ -267,17 +283,17 @@
  .B "print button"
  Bring up a dialog for generating a PostScript file.  The dialog has
  options to set the pages to be printed and the PostScript file name.
@@ -197,7 +182,7 @@ description: manpage updates
  Quit xpdf.
  .PP
  .SS Menu
-@@ -333,9 +344,9 @@
+@@ -333,9 +349,9 @@
  .PP
  .SS Links
  Clicking on a hyperlink will jump to the link's destination.  A link
@@ -210,7 +195,7 @@ description: manpage updates
  command (see the
  .B WEB BROWSERS
  section below).
-@@ -458,7 +469,7 @@
+@@ -458,7 +474,7 @@
  .PP
  When you click on a URL link in a PDF file, xpdf will execute the
  command specified by the urlCommand config file option, replacing an
@@ -219,8 +204,8 @@ description: manpage updates
  the URL, add this line to your config file:
  .PP
  .RS
-@@ -809,8 +820,8 @@
- xpdf -remote myServer file.pdf
+@@ -823,8 +839,8 @@
+ xpdf \-remote myServer file.pdf
  .RE
  .PP
 -If there is currently no xpdf running in server mode with the name
@@ -229,9 +214,20 @@ description: manpage updates
 +a new xpdf window will be opened.  If another command:
  .PP
  .RS
- xpdf -remote myServer another.pdf 9
---- a/doc/xpdfrc.5
-+++ b/doc/xpdfrc.5
+ xpdf \-remote myServer another.pdf 9
+Index: xpdf/doc/xpdfrc.5
+===================================================================
+--- xpdf.orig/doc/xpdfrc.5	2012-02-24 19:44:18.000000000 -0500
++++ xpdf/doc/xpdfrc.5	2012-02-24 19:44:22.000000000 -0500
+@@ -7,7 +7,7 @@
+ .I .xpdfrc
+ file in your home directory, it will be read.  Otherwise, a
+ system-wide configuration file will be read from
+-.IR /usr/local/etc/xpdfrc ,
++.IR /etc/xpdf/xpdfrc ,
+ if it exists.  (This is its default location; depending on build
+ options, it may be placed elsewhere.)  On Win32 systems, the
+ .I xpdfrc
 @@ -19,6 +19,9 @@
  .PP
  The following sections list all of the configuration options, sorted
@@ -242,3 +238,21 @@ description: manpage updates
  .SH INCLUDE FILES
  .TP
  .BI include " config\-file"
+@@ -467,7 +470,7 @@
+ default value is "no".
+ .TP
+ .BI launchCommand " command"
+-Sets the command executed when you click on a "launch"-type link.  The
++Sets the command executed when you click on a "launch"\-type link.  The
+ intent is for the command to be a program/script which determines the
+ file type and runs the appropriate viewer.  The command line will
+ consist of the file to be launched, followed by any parameters
+@@ -641,7 +644,7 @@
+ .fi
+ .SH FILES
+ .TP
+-.B /usr/local/etc/xpdfrc
++.B /etc/xpdf/xpdfrc
+ This is the default location for the system-wide configuration file.
+ Depending on build options, it may be placed elsewhere.
+ .TP
