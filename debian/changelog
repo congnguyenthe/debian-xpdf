@@ -1,3 +1,67 @@
+xpdf (3.03-17) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Michael Gilbert <mgilbert@debian.org>  Sun, 06 Apr 2014 03:10:29 +0000
+
+xpdf (3.03-16+experimental2) experimental; urgency=medium
+
+  * Build-depend poppler >= 0.24.
+
+ -- Michael Gilbert <mgilbert@debian.org>  Sun, 26 Jan 2014 19:43:27 +0000
+
+xpdf (3.03-16+experimental1) experimental; urgency=medium
+
+  * Support poppler 0.24 (closes: #736443).
+
+ -- Michael Gilbert <mgilbert@debian.org>  Sat, 25 Jan 2014 20:13:19 +0000
+
+xpdf (3.03-16) unstable; urgency=medium
+
+  * Make selections visible in reverse mode (closes: #692931).
+
+ -- Michael Gilbert <mgilbert@debian.org>  Thu, 23 Jan 2014 23:38:48 +0000
+
+xpdf (3.03-15) experimental; urgency=low
+
+  * Build-depend poppler >= 0.22.
+
+ -- Michael Gilbert <mgilbert@debian.org>  Mon, 20 Jan 2014 06:02:20 +0000
+
+xpdf (3.03-14) experimental; urgency=low
+
+  * Move Error.h into the build directory.
+
+ -- Michael Gilbert <mgilbert@debian.org>  Mon, 20 Jan 2014 05:32:40 +0000
+
+xpdf (3.03-13) experimental; urgency=low
+
+  * Don't require poppler >= 0.24.
+
+ -- Michael Gilbert <mgilbert@debian.org>  Mon, 20 Jan 2014 05:05:45 +0000
+
+xpdf (3.03-12) experimental; urgency=low
+
+  * Fix vcs-git url (closes: #728283).
+  * Support poppler 0.20 (closes: #679896).
+  * Support poppler 0.22 (closes: #719224). 
+  * Drop binutils-gold conflict (closes: #725514).
+  * Separate xpdf-specific global parameters (closes: #658264, #727070).
+    - Thanks to Dmitry Shachnev!
+
+ -- Michael Gilbert <mgilbert@debian.org>  Mon, 20 Jan 2014 02:54:13 +0000
+
+xpdf (3.03-11) unstable; urgency=low
+
+  * Bump standards to 3.9.4.
+  * Fix printing issue (closes: #622877).
+  * Add libxt-dev build dependency (closes: #707927).
+  * Support linking with --as-needed (closes: #671765).
+  * Switch to libmotif instead of lesstif (closes: #697098).
+  * Replace and conflict with xpdf-reader (closes: #707818).
+
+ -- Michael Gilbert <mgilbert@debian.org>  Fri, 31 May 2013 19:33:24 +0000
+
 xpdf (3.03-10) unstable; urgency=low
 
   * Build-depend on libpoppler-private-dev (closes: #660992).
